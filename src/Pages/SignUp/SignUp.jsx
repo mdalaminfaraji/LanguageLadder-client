@@ -1,15 +1,48 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import './SignUp.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaArrowRight } from 'react-icons/fa';
+import useAuth from '../../Hooks/useAuth';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
+import Swal from 'sweetalert2';
 
 const SignUp = () => {
-  const { register, handleSubmit, formState: { errors } , getValues} = useForm();
+    const {createUser, updateUserProfile}=useAuth();
+    const [axiosSecure]=useAxiosSecure();
+    const navigate=useNavigate();
+  const { register, handleSubmit, formState: { errors } , getValues, reset} = useForm();
 
   const onSubmit = (data) => {
     console.log(data);
-    // Perform registration logic here
+    const {name, email, address, gender, password, phoneNumber, photoURL}=data;
+
+    createUser(email, password)
+    .then(result=>{
+        const loggedUser=result.user;
+        console.log(loggedUser);
+        updateUserProfile(name, photoURL)
+        .then(()=>{
+            const SaveUserOnDatabase={name, email, address, gender, password, phoneNumber, photoURL};
+            axiosSecure.post('/users',SaveUserOnDatabase)
+            .then(data=>{
+                console.log('database', data);
+                if(data.data.insertedId){
+                    reset();
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'User created successfully',
+                        showConfirmButton: false,
+                        timer: 1500
+                      });
+                      navigate('/');
+                }
+            })
+        })
+    })
+
+
   };
 
   return (
@@ -37,7 +70,7 @@ const SignUp = () => {
           <div>
           <div className="form-group">
         <label className='label'>Password:</label>
-        <input
+        <input defaultValue='Alamin42%#'
           type="password"
           {...register('password', {
             required: true,
@@ -58,7 +91,7 @@ const SignUp = () => {
       
       <div className="form-group">
         <label className='label'>Confirm Password:</label>
-        <input
+        <input defaultValue='Alamin42%#'
           type="password"
           {...register('confirmPassword', {
             required: true,
