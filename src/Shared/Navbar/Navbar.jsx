@@ -1,14 +1,23 @@
 
 
 import React, { useState } from "react"
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
 
 const Navbar = () => {
+    const {user, logOut}=useAuth();
+    console.log(user);
+
+    const handleLogOut=()=>{
+        logOut()
+        .then(() => { })
+        .catch(error => console.log(error));
+    }
    const navOptions =<>
    <li><Link>Home</Link></li>
    <li><Link>Instructors</Link></li>
    <li><Link>Classes</Link></li>
-   <li><Link>Dashboard</Link></li>
+   
    
    </>
 
@@ -143,7 +152,17 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    <a className="btn">Button</a>
+
+    {
+        user?<>
+           <Link to="/dashboard" className="mx-2 hover:bg-base-200 hover:p-1 hover:rounded-full">Dashboard</Link>
+    <img src={user?.photoURL} className="rounded-full w-10 h-auto mx-2"/>
+    <button onClick={handleLogOut} className="btn btn-sm">LogOut</button>
+        </>:<>  <Link className="btn btn-sm"to="/login">Login</Link></>
+    }
+
+
+ 
   </div>
         </div>
        

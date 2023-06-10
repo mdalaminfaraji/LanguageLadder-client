@@ -1,15 +1,15 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import './Login.css'; // Import the CSS file for the component
-import { FaEye, FaEyeSlash, FaGoogle, FaGooglePlay, FaGooglePlus, FaGooglePlusSquare } from 'react-icons/fa';
+import { FaEye, FaEyeSlash, FaGoogle} from 'react-icons/fa';
 import { Player } from '@lottiefiles/react-lottie-player';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../Providers/AuthProviders';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
+import useAuth from '../../Hooks/useAuth';
 
 const Login = () => {
-    const {signIn, googleSignIn}=useContext(AuthContext);
+    const {signIn, googleSignIn}=useAuth();
     const [axiosSecure]=useAxiosSecure();
     const navigate = useNavigate();
     const location = useLocation();
@@ -17,11 +17,25 @@ const Login = () => {
     const from = location.state?.from?.pathname || "/";
 
     const [showPassword, setShowPassword] = useState(false);
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { register, handleSubmit, formState: { errors } , reset} = useForm();
 
   const onSubmit = (data) => {
+    const {email, password}=data;
     console.log(data);
-    // Perform login logic here
+    signIn(email, password)
+    .then(result=>{
+        const user=result.user;
+        console.log(user);
+        reset();
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Login Success',
+            showConfirmButton: false,
+            timer: 1500
+          });
+          navigate(from, { replace: true });
+    })
   };
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -31,13 +45,13 @@ const Login = () => {
       .then(result=>{
         const loggedInUser=result.user;
         console.log(loggedInUser);
-        const {displayName, email, photoUrl}=loggedInUser;
-        const SaveUserOnDatabase={name:displayName, email, photoURL:photoUrl};
+        const {displayName, email, photoURL}=loggedInUser;
+        console.log(photoURL);
+        const SaveUserOnDatabase={name:displayName, email, photoURL};
         axiosSecure.post('/users', SaveUserOnDatabase)
         .then(data=>{
             console.log('database', data);
             if(data.data.insertedId){
-                reset();
                 Swal.fire({
                     position: 'top-end',
                     icon: 'success',
@@ -52,31 +66,31 @@ const Login = () => {
   }
 
   return (
-    <div className="login-container grid grid-cols-1 md:grid-cols-3 gap-20">
+    <div className="login-container grid sm:grid-cols-1  md:grid-cols-3 gap-10 md:px-20 md:h-screen">
      <div>
      <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
         <h2 className='text-3xl font-semibold'>Login</h2>
         
         <div className="form-group">
           <label className='block text-start text-2xl'>Email:</label>
-          <input type="email" {...register('email', { required: true })} />
+          <input placeholder='Enter your Email Address' type="email" {...register('email', { required: true })} />
           {errors.email && <span className="error">This field is required.</span>}
         </div>
         
         <div className='form-group relative'>
           <label className='block text-start text-2xl'>Password:</label>
           <div className=''>
-            <input
+            <input placeholder='Enter your Register Password'
               type={showPassword ? 'text' : 'password'}
               {...register('password', { required: true })}
             />
-            <button type="button " className='block absolute right-5 top-14' onClick={togglePasswordVisibility}>
+            <p type=" " className='block absolute cursor-pointer right-5 top-14' onClick={togglePasswordVisibility}>
               {showPassword ? (
                 <FaEye />
               ) : (
                 <FaEyeSlash />
               )}
-            </button>
+            </p>
           </div>
           {errors.password && <span className='error'>This field is required.</span>}
         </div>
