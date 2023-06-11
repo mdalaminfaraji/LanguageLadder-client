@@ -15,7 +15,7 @@ const SignUp = () => {
 
   const onSubmit = (data) => {
     console.log(data);
-    const {name, email, address, gender, password, phoneNumber, photoURL}=data;
+    const {name, email, address, gender, password, phoneNumber, photoURL, role}=data;
 
     createUser(email, password)
     .then(result=>{
@@ -23,7 +23,7 @@ const SignUp = () => {
         console.log(loggedUser);
         updateUserProfile(name, photoURL)
         .then(()=>{
-            const SaveUserOnDatabase={name, email, address, gender, password, phoneNumber, photoURL};
+            const SaveUserOnDatabase={name, email, address, gender, password, phoneNumber, photoURL, role};
             axiosSecure.post('/users',SaveUserOnDatabase)
             .then(data=>{
                 console.log('database', data);
@@ -125,6 +125,10 @@ const SignUp = () => {
       <div className="form-group">
         <label className='label'>Address:</label>
         <input type="text" {...register('address')} />
+      </div>
+      <div className="form-group hidden">
+        <label className='label'>Role</label>
+        <input defaultValue='student' type="text" {...register('role')} />
       </div>
      </div>
         </div>
