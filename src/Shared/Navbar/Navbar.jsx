@@ -3,10 +3,21 @@
 import React, { useState } from "react"
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
+import useAdmin from "../../Hooks/useAdmin";
+import useInstructor from "../../Hooks/useInstructor";
 
 const Navbar = () => {
+    const [isAdmin]=useAdmin();
+    const [isInstructor]=useInstructor();
     const {user, logOut}=useAuth();
     console.log(user);
+
+    let link=`studentHome`;
+    if(isAdmin){
+        link=`adminHome`;
+    }else if(isInstructor){
+        link=`instructorHome`;
+    }
 
     const handleLogOut=()=>{
         logOut()
@@ -154,8 +165,12 @@ const Navbar = () => {
   <div className="navbar-end">
 
     {
-        user?<>
-           <Link to="/dashboard" className="mx-2 hover:bg-base-200 hover:p-1 hover:rounded-full">Dashboard</Link>
+        user?
+        <>
+      
+            <Link to={`/dashboard/${link}`} className="mx-2 hover:bg-base-200 hover:p-1 hover:rounded-full">Dashboard</Link>
+            {/* </>:user?.role=="admin"?<><Link to="/dashboard/adminHome" className="mx-2 hover:bg-base-200 hover:p-1 hover:rounded-full">Dashboard</Link></>:<Link to="/dashboard/studentHome" className="mx-2 hover:bg-base-200 hover:p-1 hover:rounded-full">Dashboard</Link>
+           } */}
     <img src={user?.photoURL} className="rounded-full w-10 h-auto mx-2"/>
     <button onClick={handleLogOut} className="btn btn-sm">LogOut</button>
         </>:<>  <Link className="btn btn-sm"to="/login">Login</Link></>

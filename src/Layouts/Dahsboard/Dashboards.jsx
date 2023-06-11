@@ -5,11 +5,11 @@ import Footer from '../../Shared/Footer/Footer';
 import { FaBook, FaHome, FaUsers, FaUtensils, FaWallet } from 'react-icons/fa';
 import TopNavber from '../../Shared/Navbar/TopNavber';
 import useAdmin from '../../Hooks/useAdmin';
+import useInstructor from '../../Hooks/useInstructor';
 
 const Dashboards = () => {
     const [isAdmin]=useAdmin();
-    const isInstructor=false;
-    const isStudent=false;
+    const [isInstructor]=useInstructor();
     let ComponentToRender=null;
     if(isAdmin){
             ComponentToRender = <>
@@ -28,7 +28,7 @@ const Dashboards = () => {
     }else {
         ComponentToRender=<>
             <li><NavLink to="/dashboard/studentHome"><FaHome></FaHome>Users Home</NavLink></li>
-            <li><NavLink to="/dashboard"> <FaUtensils></FaUtensils>My Selected class</NavLink></li>
+            <li><NavLink to="/dashboard/selectedclass"> <FaUtensils></FaUtensils>My Selected class</NavLink></li>
             <li><NavLink to="/dashboard/myEnrollClass"><FaWallet></FaWallet> My Enrolled class</NavLink></li>
             <li><NavLink to="/dashboard/payment"><FaWallet></FaWallet> Payment</NavLink></li>
             <li><NavLink to="/dashboard/paymentHistory"><FaUsers></FaUsers> Payment History</NavLink></li>
@@ -39,10 +39,10 @@ const Dashboards = () => {
         <TopNavber></TopNavber>
         <div className="drawer lg:drawer-open">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content flex flex-col items-center justify-center">
+        <div className="drawer-content flex flex-col mx-10 ">
             
             <Outlet></Outlet>
-            <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
+            <label htmlFor="my-drawer-2" className="btn btn-primary w-3/4 drawer-button lg:hidden">Open drawer</label>
         
         </div> 
         <div className="drawer-side">

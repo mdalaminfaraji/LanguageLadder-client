@@ -81,16 +81,16 @@ const ManageUsers = () => {
                 <td>{user.email}</td>
                 <td>
                   {/* {user.role === 'student' && ( */}
-                    <div>
+                    <div className='flex'>
                       <button
-                      className="btn btn-secondary btn-sm"
+                      className="btn btn-secondary btn-xs text-xs"
                         onClick={() => handleMakeInstructor(user._id)}
                         disabled={user.role !== 'student'&& user.role == 'instructor'}
                       >
                         Make Instructor
                       </button>
                       <button
-                      className="btn btn-primary btn-sm"
+                      className="btn btn-primary btn-xs text-xs"
                         onClick={() => handleMakeAdmin(user._id)}
                         disabled={user.role !== 'student'&& user.role== 'admin'}
                       >
