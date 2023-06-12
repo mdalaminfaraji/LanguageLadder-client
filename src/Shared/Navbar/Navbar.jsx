@@ -25,9 +25,9 @@ const Navbar = () => {
         .catch(error => console.log(error));
     }
    const navOptions =<>
-   <li><Link>Home</Link></li>
-   <li><Link>Instructors</Link></li>
-   <li><Link>Classes</Link></li>
+   <li><Link to='/'>Home</Link></li>
+   <li><Link to='/instructor'>Instructors</Link></li>
+   <li><Link to='/classes'>Classes</Link></li>
    
    
    </>

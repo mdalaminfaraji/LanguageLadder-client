@@ -51,7 +51,7 @@ const Login = () => {
         axiosSecure.post('/users', SaveUserOnDatabase)
         .then(data=>{
             console.log('database', data);
-            if(data.data.insertedId){
+            if(data.data.message){
                 Swal.fire({
                     position: 'top-end',
                     icon: 'success',

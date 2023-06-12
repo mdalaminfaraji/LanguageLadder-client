@@ -17,6 +17,8 @@ import StudentHome from "../Pages/Dahsboard/Students/StudentHome";
 import ManageClasses from "../Pages/Dahsboard/Admin/ManageClasses";
 import ManageUsers from "../Pages/Dahsboard/Admin/ManageUsers";
 import AdminHome from "../Pages/Dahsboard/Admin/AdminHome";
+import Instructors from "../Pages/Instructors/Instructors";
+import Classes from "../Pages/Classes/Classes";
 
 const router = createBrowserRouter([
     {
@@ -35,6 +37,14 @@ const router = createBrowserRouter([
         {
           path:"/login",
           element:<Login></Login>
+        },
+        {
+          path:'/instructor',
+          element:<Instructors></Instructors>
+        },
+        {
+          path:'/classes',
+          element:<Classes></Classes>
         }
     ]
     },
