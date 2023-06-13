@@ -3,19 +3,22 @@ import useAuth from '../../../Hooks/useAuth';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
+import useSelectclass from '../../../Hooks/useSelectclass';
 
 const SelectedClasses = () => {
     const {user, loading}=useAuth();
     const [axiosSecure]=useAxiosSecure();
-    const {refetch, data:selectClass=[]}=useQuery({
-        queryKey:['selectClass', user?.email],
-        enabled:!loading,
-        queryFn: async ()=>{
-            const res=await axiosSecure(`/selectClass/student/${user?.email}`);
-            console.log('axios',res);
-            return res.data;
-        },
-    })
+    const [refetch, selectClass]=useSelectclass();
+    // const {refetch, data:selectClass=[]}=useQuery({
+    //     queryKey:['selectClass', user?.email],
+    //     enabled:!loading,
+    //     queryFn: async ()=>{
+    //         const res=await axiosSecure(`/selectClass/student/${user?.email}`);
+    //         console.log('axios',res);
+    //         return res.data;
+    //     },
+    // })
     console.log(selectClass);
 
     const handleDelete = (id) => {
@@ -81,9 +84,8 @@ const SelectedClasses = () => {
                                     }}>Delete</button>
                                 </td>
                                 <td>
-                                    <button className="btn btn-primary" onClick={()=>{
-                                        window.location.href='/pay';
-                                    }}>Pay</button>
+                                    <Link to={`/dashboard/payment/${item._id}`} className="btn btn-primary"
+                                    >Pay</Link>
                                 </td>
                             </tr>
                         )
