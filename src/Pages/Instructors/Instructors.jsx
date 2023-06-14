@@ -8,17 +8,7 @@ import { Helmet } from 'react-helmet-async';
 const Instructors = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [instructors, setInstructors] =useState([]);
-    // const [axiosSecure]=useAxiosSecure();
-    // const {refetch, data:instructors=[]}=useQuery({
-    //     queryKey:['users'],
-    //     enabled:!loading,
-    //     queryFn: async ()=>{
-    //         const res=await axiosSecure(`/instructors`);
-    //         console.log('axios',res);
-    //         return res.data;
-    //     },
-    // })
-    
+
     useEffect(() => {
         // Fetch the approved classes data from the backend
         setTimeout(()=>{
