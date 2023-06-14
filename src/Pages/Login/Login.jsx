@@ -7,6 +7,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
 import useAuth from '../../Hooks/useAuth';
+import { Helmet } from 'react-helmet-async';
 
 const Login = () => {
     const {signIn, googleSignIn}=useAuth();
@@ -67,6 +68,10 @@ const Login = () => {
 
   return (
     <div className="login-container grid sm:grid-cols-1  md:grid-cols-3 gap-10 md:px-20 md:h-screen">
+      <Helmet>
+               <title>LanguageLadder | Login</title>
+       
+             </Helmet>
      <div>
      <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
         <h2 className='text-3xl font-semibold'>Login</h2>

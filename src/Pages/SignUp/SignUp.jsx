@@ -6,6 +6,7 @@ import { FaArrowRight } from 'react-icons/fa';
 import useAuth from '../../Hooks/useAuth';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
 
 const SignUp = () => {
     const {createUser, updateUserProfile}=useAuth();
@@ -47,6 +48,10 @@ const SignUp = () => {
 
   return (
    <>
+   <Helmet>
+               <title>LanguageLadder | SignUp</title>
+       
+             </Helmet>
      
       <form className='registration-form mx-20 my-8' onSubmit={handleSubmit(onSubmit)}>
         <div className='text-3xl font-semibold'>Welcome To Our Registration Page</div>

@@ -14,7 +14,7 @@ const PopularInstructor = () => {
     
      setTimeout(() => {
       
-       fetch('http://localhost:5000/instructors')
+       fetch('https://summer-camp-server-flame.vercel.app/instructors')
          .then((response) => response.json())
          .then((data) => {
            setInstructor(data);

@@ -3,6 +3,7 @@ import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import useAuth from '../../../Hooks/useAuth';
 import useUsers from '../../../Hooks/useUsers';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
 
 const ManageUsers = () => {
     const {user, loading}=useAuth();
@@ -58,6 +59,9 @@ const ManageUsers = () => {
     }
     return (
         <div className="overflow-x-auto">
+              <Helmet>
+         <title>LanguageLadder | ManageUsers</title>
+         </Helmet>
         <h2 className=' text-2xl'>Users Management</h2>
         <div className="divider  text-7xl">-</div>
         <table className="table">

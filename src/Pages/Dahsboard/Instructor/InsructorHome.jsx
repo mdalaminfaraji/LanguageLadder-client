@@ -3,6 +3,7 @@ import useAuth from '../../../Hooks/useAuth';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 const InsructorHome = () => {
     const {user, loading}=useAuth();
@@ -22,6 +23,9 @@ const InsructorHome = () => {
     console.log(classes);
     return (
         <div>
+                <Helmet>
+                <title>LanguageLadder |InstructorHome</title>
+                </Helmet>
             <h2 className='text-4xl pt-5'>Welcome Back {user.displayName}</h2>
             <p className='divider text-4xl'>-</p>
 

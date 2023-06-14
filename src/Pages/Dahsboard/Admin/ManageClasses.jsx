@@ -4,6 +4,7 @@ import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 
 import Swal from 'sweetalert2';
 import { useForm } from 'react-hook-form';
+import { Helmet } from 'react-helmet-async';
 const ManageClasses = () => {
     const { register, handleSubmit, watch, formState: { errors }, reset } = useForm();
     const [showModal, setShowModal] = useState(false);
@@ -92,6 +93,9 @@ const ManageClasses = () => {
  
     return (
         <div className="overflow-x-auto">
+              <Helmet>
+       <title>LanguageLadder |ManageClass</title>
+     </Helmet>
             <h1 className='text-4xl my-2 font-semibold'>Manage Class </h1>
             <div className='divider text-6xl'>-</div>
   <table className="table border-4">

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import useAuth from '../../../Hooks/useAuth';
+import { Helmet } from 'react-helmet-async';
 
 const MyEnrolledClasses = () => {
     const {user, loading}=useAuth();
@@ -7,7 +8,7 @@ const MyEnrolledClasses = () => {
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const response = await fetch(`http://localhost:5000/payments/${user?.email}`);
+            const response = await fetch(`https://summer-camp-server-flame.vercel.app/payments/${user?.email}`);
             const data = await response.json();
             setUserData(data);
           } catch (error) {
@@ -20,6 +21,9 @@ const MyEnrolledClasses = () => {
       console.log(userData);
     return (
         <div>
+              <Helmet>
+    <title>LanguageLadder |MyEnrolmentClass</title>
+   </Helmet>
              <h2 className='text-4xl mt-3'>My Enrolled Class </h2>
             <p className='divider text-4xl'>-</p>
             <div>

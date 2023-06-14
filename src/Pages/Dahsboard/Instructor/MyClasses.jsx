@@ -4,6 +4,7 @@ import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import { useForm } from "react-hook-form";
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
 
 const MyClasses = () => {
     const { register, handleSubmit, watch, formState: { errors }, reset } = useForm();
@@ -61,6 +62,9 @@ const MyClasses = () => {
      
     return (
         <div >
+              <Helmet>
+    <title>LanguageLadder | MyClasses</title>
+   </Helmet>
             <div >
       <h2 className='text-3xl py-5 font-semibold'>My Classes</h2>
        <div className='divider text-6xl'> - </div>

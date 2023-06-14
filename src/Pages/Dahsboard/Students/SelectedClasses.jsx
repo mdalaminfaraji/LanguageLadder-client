@@ -5,21 +5,14 @@ import { useQuery } from '@tanstack/react-query';
 import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom';
 import useSelectclass from '../../../Hooks/useSelectclass';
+import { Helmet } from 'react-helmet-async';
 
 const SelectedClasses = () => {
     const {user, loading}=useAuth();
     const [axiosSecure]=useAxiosSecure();
     const [refetch, selectClass]=useSelectclass();
     const selectClassLength=selectClass.length;
-    // const {refetch, data:selectClass=[]}=useQuery({
-    //     queryKey:['selectClass', user?.email],
-    //     enabled:!loading,
-    //     queryFn: async ()=>{
-    //         const res=await axiosSecure(`/selectClass/student/${user?.email}`);
-    //         console.log('axios',res);
-    //         return res.data;
-    //     },
-    // })
+ 
     console.log(selectClass);
 
     const handleDelete = (id) => {
@@ -33,7 +26,7 @@ const SelectedClasses = () => {
             confirmButtonText: 'Yes, delete it!'
           }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/selectClass/${id}`, {
+                fetch(`https://summer-camp-server-flame.vercel.app/selectClass/${id}`, {
                     method: 'DELETE',
                   })
                     .then((response) => {
@@ -55,6 +48,9 @@ const SelectedClasses = () => {
         }
     return (
         <div>
+                <Helmet>
+    <title>LanguageLadder | SelectedClass</title>
+   </Helmet>
              <h2 className='text-4xl mt-3'>Your Selected Class </h2>
             <p className='divider text-4xl'>-</p>
             <div>

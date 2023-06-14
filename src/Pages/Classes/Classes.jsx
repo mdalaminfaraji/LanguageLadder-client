@@ -5,6 +5,7 @@ import ClassCard from './ClassCard';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import useAuth from '../../Hooks/useAuth';
+import { Helmet } from 'react-helmet-async';
 
 const Classes = () => {
     const {user}=useAuth();
@@ -16,7 +17,7 @@ const Classes = () => {
    
     setTimeout(() => {
      
-      fetch('http://localhost:5000/approvedClass')
+      fetch('https://summer-camp-server-flame.vercel.app/approvedClass')
         .then((response) => response.json())
         .then((data) => {
           setClasses(data);
@@ -31,6 +32,10 @@ const Classes = () => {
     //   }
     return (
         <div>
+           <Helmet>
+               <title>LanguageLadder | Classes</title>
+       
+             </Helmet>
             <h1 className='text-4xl my-5'>All Classes data</h1>
             <p className='divider text-green-800 text-5xl w-1/2 mx-auto'>-</p>
             {isLoading? <span className="loading loading-spinner loading-xs"></span> : null}

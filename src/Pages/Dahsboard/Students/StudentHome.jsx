@@ -3,6 +3,7 @@ import useAuth from '../../../Hooks/useAuth';
 import useSelectclass from '../../../Hooks/useSelectclass';
 import usePayment from '../../../Hooks/usePayment';
 import UserGraph from './UserGraph';
+import { Helmet } from 'react-helmet-async';
 
 const StudentHome = () => {
     const{user}=useAuth();
@@ -12,7 +13,7 @@ const StudentHome = () => {
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const response = await fetch(`http://localhost:5000/payments/${user?.email}`);
+            const response = await fetch(`https://summer-camp-server-flame.vercel.app/payments/${user?.email}`);
             const data = await response.json();
             setUserData(data);
           } catch (error) {
@@ -25,6 +26,9 @@ const StudentHome = () => {
    
     return (
         <div>
+                <Helmet>
+                <title>LanguageLadder | StudentHome</title>
+               </Helmet>
             <h2 className='text-4xl mt-5'>Welcome back, {user?.displayName} </h2>
             <p className='divider text-4xl'>-</p>
             <div className="stats shadow">

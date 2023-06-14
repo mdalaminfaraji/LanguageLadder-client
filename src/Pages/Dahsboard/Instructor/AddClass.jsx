@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import useAuth from '../../../Hooks/useAuth';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
 const AddClass = () => {
     const {user}=useAuth();
   const [axiosSecure]=useAxiosSecure();
@@ -30,6 +31,9 @@ const AddClass = () => {
     };
     return (
         <div>
+              <Helmet>
+              <title>LanguageLadder | AddClass</title>
+            </Helmet>
             <h1 className='text-4xl pb-6 font-semibold'>Add Classes</h1>
             <div className='divider text-6xl'> -</div>
              <form className='border-2 p-12 bg-slate-200' onSubmit={handleSubmit(onSubmit)}>

@@ -16,7 +16,7 @@ const PopularClass = () => {
     
      setTimeout(() => {
       
-       fetch('http://localhost:5000/Classes')
+       fetch('https://summer-camp-server-flame.vercel.app/Classes')
          .then((response) => response.json())
          .then((data) => {
            setClasses(data);

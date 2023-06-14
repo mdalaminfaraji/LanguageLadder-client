@@ -64,7 +64,7 @@ const Navbar = () => {
         user?
         <>
       
-      <NavLink to={`/dashboard/${link}`} title={link}   className='text-lg mr-2'>Dashboard<span className="badge badge-secondary">+{selectClassLength}</span></NavLink>
+      <NavLink to={`/dashboard/${link}`} title={link}   className='text-lg mr-2'>Dashboard {isAdmin ||isInstructor?'' : <span className="badge badge-secondary">+{selectClassLength}</span>} </NavLink>
           
     <img src={user?.photoURL} title={user?.displayName} className="hidden sm:flex rounded-full w-10 h-auto mx-2"/>
     <button onClick={handleLogOut} className="btn btn-sm">LogOut</button>

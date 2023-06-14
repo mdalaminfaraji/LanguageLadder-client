@@ -18,14 +18,14 @@ const studentEmail=user?.email;
       Swal.fire({
         position: 'center',
         // icon: 'success',
-        title: 'Please log in before selecting the course.',
+        title: 'Please Login Before Selecting The Course.',
         showConfirmButton: false,
         timer: 2000
       })
       return;
     }
     console.log(selectClass);
-    fetch('http://localhost:5000/selectClass', {
+    fetch('https://summer-camp-server-flame.vercel.app/selectClass', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

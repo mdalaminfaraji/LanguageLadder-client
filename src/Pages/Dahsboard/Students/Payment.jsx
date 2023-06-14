@@ -5,6 +5,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import useAuth from '../../../Hooks/useAuth';
 import CheckoutForm from './PaymentMethod/CheckoutForm';
 import { Elements } from "@stripe/react-stripe-js";
+import { Helmet } from 'react-helmet-async';
 
 const stripePromise=loadStripe(import.meta.env.VITE_Payment_Gateway_PK);
 
@@ -38,8 +39,10 @@ const Payment = () => {
     console.log(specificPay);
     return (
         <div>
-            
-            <h2 className="text-xl"> Payment section</h2>
+                <Helmet>
+          <title>LanguageLadder | Payment</title>
+        </Helmet>
+            <h2 className="text-xl font-bold mt-5"> Payment section</h2>
             <Elements stripe={stripePromise}>
                 <CheckoutForm specificPay={specificPay} price={price} id={id} refetch={refetch}></CheckoutForm>
             </Elements>

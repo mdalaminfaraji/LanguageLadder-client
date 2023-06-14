@@ -55,52 +55,52 @@ const router = createBrowserRouter([
       children:[
         {
           path:"selectedclass",
-          element:<SelectedClasses></SelectedClasses>
+          element:<PrivateRoute><SelectedClasses></SelectedClasses></PrivateRoute>
         },
         {
           path:"myEnrollClass",
-          element:<MyEnrolledClasses></MyEnrolledClasses>
+          element:<PrivateRoute><MyEnrolledClasses></MyEnrolledClasses></PrivateRoute>
         },
         {
           path:`payment/:id`,
-          element:<Payment></Payment>
+          element:<PrivateRoute><Payment></Payment></PrivateRoute>
           
         },
         {
           path:"paymentHistory",
-          element:<PaymentHistory></PaymentHistory>
+          element:<PrivateRoute><PaymentHistory></PaymentHistory></PrivateRoute>
         },
         {
           path:"studentHome",
-          element:<StudentHome></StudentHome>
+          element:<PrivateRoute><StudentHome></StudentHome></PrivateRoute>
         },
         // Instructor routes
         {
           path:'instructorHome',
-          element:<InsructorHome></InsructorHome>
+          element:<PrivateRoute><InsructorHome></InsructorHome></PrivateRoute>
 
         },
         {
           path:"AddClass",
-          element:<AddClass></AddClass>
+          element:<PrivateRoute><AddClass></AddClass></PrivateRoute>
 
         },
         {
           path:"myclass",
-          element:<MyClasses></MyClasses>
+          element:<PrivateRoute><MyClasses></MyClasses></PrivateRoute>
         },
         // Addmin route
         {
           path:"manageClass",
-          element:<ManageClasses></ManageClasses>
+          element:<PrivateRoute><ManageClasses></ManageClasses></PrivateRoute>
         },
         {
           path:"ManageUsers",
-          element:<ManageUsers></ManageUsers>
+          element:<PrivateRoute><ManageUsers></ManageUsers></PrivateRoute>
         },
         {
           path:"adminHome",
-          element:<AdminHome></AdminHome>
+          element:<PrivateRoute><AdminHome></AdminHome></PrivateRoute>
         }
       ]
     }

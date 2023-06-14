@@ -6,9 +6,12 @@ import useUsers from '../../../Hooks/useUsers';
 import React, { PureComponent } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import MyChart from './MyChart';
+import { Helmet } from 'react-helmet-async';
 
 const AdminHome = () => {
-  
+    <Helmet>
+    <title>LanguageLadder |AdminHome</title>
+   </Helmet>
     const {user}=useAuth();
     const [classes]=useClasses();
     const [users]=useUsers();

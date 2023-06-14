@@ -7,7 +7,7 @@ const usePayment = () => {
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const response = await fetch(`http://localhost:5000/payments/${user?.email}`);
+            const response = await fetch(`https://summer-camp-server-flame.vercel.app/payments/${user?.email}`);
             const data = await response.json();
             setUserData(data);
           } catch (error) {

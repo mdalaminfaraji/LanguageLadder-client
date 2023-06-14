@@ -9,7 +9,7 @@ const ErrorPage = () => {
     <section className='flex items-center h-screen p-16 bg-red-100  text-gray-900'>
       <div className='container flex flex-col items-center justify-center px-5 mx-auto my-8'>
         <Player
-         src='https://assets4.lottiefiles.com/packages/lf20_afwjhfb2.json'
+         src='https://assets8.lottiefiles.com/packages/lf20_dbj0tjag.json'
          className="player" 
          loop 
          autoplay

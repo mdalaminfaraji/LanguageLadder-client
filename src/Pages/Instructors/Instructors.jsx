@@ -3,6 +3,7 @@ import useUsers from '../../Hooks/useUsers';
 import useAuth from '../../Hooks/useAuth';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
+import { Helmet } from 'react-helmet-async';
 
 const Instructors = () => {
     const [isLoading, setIsLoading] = useState(true);
@@ -21,7 +22,7 @@ const Instructors = () => {
     useEffect(() => {
         // Fetch the approved classes data from the backend
         setTimeout(()=>{
-         fetch('http://localhost:5000/instructors')
+         fetch('https://summer-camp-server-flame.vercel.app/instructors')
           .then((response) => response.json())
           .then((data) => {
             setInstructors(data);
@@ -35,6 +36,10 @@ const Instructors = () => {
    
     return (
         <div>
+          <Helmet>
+               <title>LanguageLadder | Instructors</title>
+       
+             </Helmet>
             <h1 className='text-4xl my-5'>Welcome To Our Instructor Page</h1>
             <p className='divider text-green-800 text-5xl w-1/2 mx-auto'>-</p>
 

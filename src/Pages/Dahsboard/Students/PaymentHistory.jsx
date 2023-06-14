@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import useAuth from '../../../Hooks/useAuth';
 import usePayment from '../../../Hooks/usePayment';
+import { Helmet } from 'react-helmet-async';
 
 const PaymentHistory = () => {
     const {user, loading}=useAuth();
@@ -9,6 +10,9 @@ const PaymentHistory = () => {
 ;
     return (
         <div>
+              <Helmet>
+            <title>LanguageLadder | PaymentHistory</title>
+          </Helmet>
              <h2 className='text-4xl mt-3'>Your Payment History </h2>
             <p className='divider text-4xl'>-</p>
             <div>
