@@ -5,20 +5,21 @@ import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import InstructorChart from './InstructorChart';
+import useInstructorClasses from '../../../Hooks/useInstructorClasses';
 
 const InsructorHome = () => {
     const {user, loading}=useAuth();
-    
-    const [axiosSecure]=useAxiosSecure();
-    const {refetch, data:classes=[]}=useQuery({
-        queryKey:['users', user?.email],
-        enabled:!loading,
-        queryFn: async ()=>{
-            const res=await axiosSecure(`/classes/${user?.email}`);
-            console.log('axios',res);
-            return res.data;
-        },
-    })
+    const [refetch, classes]=useInstructorClasses();
+    // const [axiosSecure]=useAxiosSecure();
+    // const {refetch, data:classes=[]}=useQuery({
+    //     queryKey:['users', user?.email],
+    //     enabled:!loading,
+    //     queryFn: async ()=>{
+    //         const res=await axiosSecure(`/classes/${user?.email}`);
+    //         console.log('axios',res);
+    //         return res.data;
+    //     },
+    // })
     const TotalPrice=classes.reduce((sum, item)=>sum+item.price, 0);
     const AvailableSeats=classes.reduce((sum, item)=>sum+item.availableSeats, 0);
     console.log(classes);
