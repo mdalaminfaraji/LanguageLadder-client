@@ -20,12 +20,13 @@ const MyEnrolledClasses = () => {
       console.log(userData);
     return (
         <div>
-            <h2>My Enrolled classes</h2>
+             <h2 className='text-4xl mt-3'>My Enrolled Class </h2>
+            <p className='divider text-4xl'>-</p>
             <div>
             <div className="overflow-x-auto">
   <table className="table">
     {/* head */}
-    <thead>
+    <thead className='text-lg text-black'>
       <tr>
         <th>
           #

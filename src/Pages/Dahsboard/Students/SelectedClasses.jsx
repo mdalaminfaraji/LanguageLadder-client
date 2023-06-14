@@ -10,6 +10,7 @@ const SelectedClasses = () => {
     const {user, loading}=useAuth();
     const [axiosSecure]=useAxiosSecure();
     const [refetch, selectClass]=useSelectclass();
+    const selectClassLength=selectClass.length;
     // const {refetch, data:selectClass=[]}=useQuery({
     //     queryKey:['selectClass', user?.email],
     //     enabled:!loading,
@@ -54,12 +55,13 @@ const SelectedClasses = () => {
         }
     return (
         <div>
-            <h1>I am new Student</h1>
+             <h2 className='text-4xl mt-3'>Your Selected Class </h2>
+            <p className='divider text-4xl'>-</p>
             <div>
             <div className="overflow-x-auto">
             <table className="table">
                 {/* head */}
-                <thead>
+                <thead className='text-lg text-black'>
                 <tr>
                     <th>#</th>
                     <th>ClassName</th>

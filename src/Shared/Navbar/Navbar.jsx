@@ -6,6 +6,7 @@ import useAuth from "../../Hooks/useAuth";
 import useAdmin from "../../Hooks/useAdmin";
 import useInstructor from "../../Hooks/useInstructor";
 import logo1 from "../../Images/logo1.png";
+import useSelectclass from "../../Hooks/useSelectclass";
 
 
 
@@ -14,7 +15,9 @@ const Navbar = () => {
     const [isInstructor]=useInstructor();
     const {user, logOut}=useAuth();
     console.log(user);
-
+    const [refetch, selectClass]=useSelectclass();
+    const selectClassLength=selectClass.length;
+    refetch();
     let link=`studentHome`;
     if(isAdmin){
         link=`adminHome`;
@@ -61,7 +64,7 @@ const Navbar = () => {
         user?
         <>
       
-      <NavLink to={`/dashboard/${link}`} title={link}   className='text-lg mr-2'>Dashboard</NavLink>
+      <NavLink to={`/dashboard/${link}`} title={link}   className='text-lg mr-2'>Dashboard<span className="badge badge-secondary">+{selectClassLength}</span></NavLink>
           
     <img src={user?.photoURL} title={user?.displayName} className="hidden sm:flex rounded-full w-10 h-auto mx-2"/>
     <button onClick={handleLogOut} className="btn btn-sm">LogOut</button>

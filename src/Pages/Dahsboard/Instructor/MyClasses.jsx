@@ -83,7 +83,7 @@ const MyClasses = () => {
               <tr key={classItem._id}>
                 <td>{classItem.className}</td>
                 <td>{classItem.status}</td>
-                <td className='text-center'>{classItem?.totalEnrolledStudents==null?0:classItem.totalEnrolledStudents}</td>
+                <td className='text-center'>{classItem?.totalEnrolment==null?0:classItem.totalEnrolment}</td>
                 <td className='text-center'>{classItem.status === 'denied' ? classItem.feedback : '-'}</td>
                 <td>
                     <button onClick={()=>handleUpdate(classItem._id)} className='btn btn-primary btn-sm'>Update</button>

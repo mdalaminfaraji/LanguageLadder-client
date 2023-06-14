@@ -8,7 +8,7 @@ const TopNavber = ({toggleTheme, darkMode}) => {
     return (
         <div>
             <div >
-          <div className="mx-auto -mt-7 grid w-full max-w-full grid-cols-4 gap-6 py-2 px-6 text-sm text-slate-500 md:grid-cols-8 lg:grid-cols-12">
+          <div className="mx-auto -mt-7 grid w-full max-w-full grid-cols-4 gap-6 py-2 px-6 text-sm text-white bg-[#19243A] md:grid-cols-8 lg:grid-cols-12">
             <div className="col-span-2 relative items-start md:col-span-4 lg:col-span-6">
               <div className='inline-flex items-center absolute left-0'>
                 <FaPhone className='mr-2'></FaPhone>

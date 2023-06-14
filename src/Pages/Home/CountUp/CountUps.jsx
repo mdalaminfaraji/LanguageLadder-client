@@ -12,7 +12,7 @@ const CountUps = () => {
             <p>Our Students </p>
             <p className='divider text-green-800'>-</p>
             <CountUp 
-               start={0} duration={10} end={1000} delay={0}
+               start={0} duration={10} end={4567} delay={0}
             
             >
             {({ countUpRef, start }) => (
@@ -27,7 +27,7 @@ const CountUps = () => {
             <p>Our Assistant </p>
             <p className='divider text-green-800'>-</p>
             <CountUp 
-               start={0} duration={10} end={100} delay={0}
+               start={0} duration={10} end={1456} delay={0}
             
             >
             {({ countUpRef, start }) => (
@@ -42,7 +42,7 @@ const CountUps = () => {
             <p>Our Teachers </p>
             <p className='divider text-green-800'>-</p>
             <CountUp 
-               start={0}  duration={10} end={200} delay={0}
+               start={0}  duration={10} end={678} delay={0}
             
             >
             {({ countUpRef, start }) => (

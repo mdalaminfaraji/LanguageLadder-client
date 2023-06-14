@@ -1,32 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import useAuth from '../../../Hooks/useAuth';
+import usePayment from '../../../Hooks/usePayment';
 
 const PaymentHistory = () => {
     const {user, loading}=useAuth();
-    const [userData, setUserData] = useState([]);
+    const [userData] = usePayment();
     const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true };
-    useEffect(() => {
-        const fetchData = async () => {
-          try {
-            const response = await fetch(`http://localhost:5000/payments/${user?.email}`);
-            const data = await response.json();
-            setUserData(data);
-          } catch (error) {
-            console.error('Error fetching user data:', error);
-          }
-        };
-        
-        fetchData();
-      }, [user?.email]);
-      console.log(userData);
+;
     return (
         <div>
-            <h2>My Enrolled classes</h2>
+             <h2 className='text-4xl mt-3'>Your Payment History </h2>
+            <p className='divider text-4xl'>-</p>
             <div>
             <div className="overflow-x-auto">
   <table className="table">
     {/* head */}
-    <thead>
+    <thead className='text-lg text-black'>
       <tr>
         <th>
           #
@@ -35,7 +24,7 @@ const PaymentHistory = () => {
         <th>ClassName</th>
         <th className='text-center'>Date</th>
        
-        <th>TransactionId</th>
+        <th className='text-center'>TransactionId</th>
         
         
       </tr>

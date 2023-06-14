@@ -3,8 +3,10 @@ import useAdmin from '../../Hooks/useAdmin';
 import useInstructor from '../../Hooks/useInstructor';
 import useAuth from '../../Hooks/useAuth';
 import Swal from 'sweetalert2';
+import useSelectclass from '../../Hooks/useSelectclass';
 
 const ClassCard = ({item}) => {
+  const [refetch, selectClass]=useSelectclass()
   const {user}=useAuth();
   const [isAdmin]=useAdmin();
   const [isInstructor]=useInstructor();
@@ -31,7 +33,7 @@ const studentEmail=user?.email;
       body: JSON.stringify({ selectClass, _id, studentEmail}),
     })
     .then(res=>{
-      console.log(res);
+      refetch();
       if(res.ok){
         Swal.fire({
           position: 'center',
@@ -50,10 +52,10 @@ const studentEmail=user?.email;
         <div className={`card  card-side shadow-xl  ${item.availableSeats===0?'bg-red-600':''}`}>
                      <figure><img src={item.classImage} className='w-60' alt="Movie"/></figure>
                      <div className="card-body">
-                       <h2 className="card-title text-start"><span></span>{item.className}!</h2>
+                       <h2 className="text-xl font-bold text-start"><span></span>{item.className}!</h2>
                        <p className='text-start'><span className='text-start'>Instructor: </span>{item.instructorName}</p>
-                       <p className='text-start'><span>AvailableSeats</span> {item.availableSeats}</p>
-                       <p className='text-start'>Price: {item.price}</p>
+                       <p className='text-start'><span>AvailableSeats:</span> {item.availableSeats}</p>
+                       <p className='text-start'>Price: ${item.price}</p>
                        <div className="card-actions justify-end">
                          <button disabled={isAdmin|| isInstructor|| item.availableSeats===0} onClick={()=>handleSelect(item)} className="btn btn-primary">Select Course</button>
                        </div>

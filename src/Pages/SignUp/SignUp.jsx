@@ -70,7 +70,7 @@ const SignUp = () => {
           <div>
           <div className="form-group">
         <label className='label'>Password:</label>
-        <input value='Alamin42%#'
+        <input 
           type="password"
           {...register('password', {
             required: true,
@@ -91,7 +91,7 @@ const SignUp = () => {
       
       <div className="form-group">
         <label className='label'>Confirm Password:</label>
-        <input value='Alamin42%#'
+        <input 
           type="password"
           {...register('confirmPassword', {
             required: true,
