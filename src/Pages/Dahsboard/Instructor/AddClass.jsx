@@ -11,8 +11,8 @@ const AddClass = () => {
     const onSubmit = (data) => {
       // Perform submission logic here
       
-      const {instructorName,className, classImage, instructorEmail,availableSeats , price, status}=data;
-      const AddClassData={instructorName,className,classImage,instructorEmail,availableSeats:parseFloat(availableSeats),price:parseFloat(price),status};
+      const {instructorName,className, classImage, instructorEmail,availableSeats , price, status, totalEnrolment}=data;
+      const AddClassData={instructorName,className,classImage,instructorEmail,availableSeats:parseFloat(availableSeats),price:parseFloat(price),status, totalEnrolment:parseFloat(totalEnrolment)};
       console.log(AddClassData);
       axiosSecure.post('/addClasses', AddClassData)
       .then(result=>{
@@ -72,6 +72,7 @@ const AddClass = () => {
        </div>
              </div>
       <input type='hidden' value="pending" {...register('status')}></input>
+      <input type='hidden' value='0' {...register('totalEnrolment')}></input>
 
       <button className='btn btn-primary w-1/2' type="submit">Add Class</button>
     </form>

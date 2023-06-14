@@ -10,8 +10,8 @@ const ClassCard = ({item}) => {
   const [isInstructor]=useInstructor();
 const studentEmail=user?.email;
   const handleSelect = (item) => {
-    const {_id,availableSeats,classImage, className,instructorName,price, instructorEmail, status }=item;
-    const selectClass={studentEmail,selectClassid:_id,availableSeats,classImage, className,instructorName,price, instructorEmail, status}
+    const {_id,availableSeats,classImage, className,instructorName,price, instructorEmail, status, totalEnrolment}=item;
+    const selectClass={studentEmail,selectClassid:_id,availableSeats,classImage, className,instructorName,price, instructorEmail, status, totalEnrolment}
     if (!user) {
       Swal.fire({
         position: 'center',
@@ -47,7 +47,7 @@ const studentEmail=user?.email;
     });
   };
     return (
-        <div className={`card  card-side  shadow-xl  ${item.availableSeats===0?'bg-red-600':'bg-base-100'}`}>
+        <div className={`card  card-side shadow-xl  ${item.availableSeats===0?'bg-red-600':''}`}>
                      <figure><img src={item.classImage} className='w-60' alt="Movie"/></figure>
                      <div className="card-body">
                        <h2 className="card-title text-start"><span></span>{item.className}!</h2>

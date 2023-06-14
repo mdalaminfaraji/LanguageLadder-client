@@ -35,7 +35,7 @@ const Payment = () => {
     // if(loading){
     //     return <div><span className="loading loading-ring loading-xs"></span></div>;
     // }
-    
+    console.log(specificPay);
     return (
         <div>
             

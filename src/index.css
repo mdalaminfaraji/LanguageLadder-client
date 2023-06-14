@@ -8,3 +8,13 @@
   .drawer-side a {
     background-color: transparent;
 }
+
+.light-theme {
+  background-color: #fbf7f7;
+  color: #000000;
+}
+
+.dark-theme {
+  background-color: rgb(7%, 9%, 15%);
+  color: white;
+}

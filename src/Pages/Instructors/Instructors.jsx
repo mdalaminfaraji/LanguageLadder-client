@@ -35,12 +35,13 @@ const Instructors = () => {
    
     return (
         <div>
-            <p>Instructor Page</p>
+            <h1 className='text-4xl my-5'>Welcome To Our Instructor Page</h1>
+            <p className='divider text-green-800 text-5xl w-1/2 mx-auto'>-</p>
 
                { isLoading ?<span className="loading loading-spinner loading-md"></span>:null}
             <div className='grid grid-cols-1 md:grid-cols-3 gap-10 mb-5'>
             {
-                instructors.map(person=><div key={person._id} className="card w-96 bg-base-100 shadow-xl">
+                instructors.map(person=><div key={person._id} className="card w-96  shadow-xl">
                 <figure className="px-10 pt-10">
                   <img src={person.photoURL} alt="Shoes" className="rounded-xl" />
                 </figure>

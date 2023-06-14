@@ -48,7 +48,7 @@ const SignUp = () => {
   return (
    <>
      
-      <form className='registration-form mx-20 my-4' onSubmit={handleSubmit(onSubmit)}>
+      <form className='registration-form mx-20 my-8' onSubmit={handleSubmit(onSubmit)}>
         <div className='text-3xl font-semibold'>Welcome To Our Registration Page</div>
         <div className="divider text-4xl text-blue-500">-</div>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-x-10'>

@@ -31,7 +31,8 @@ const Classes = () => {
     //   }
     return (
         <div>
-            <h1>All Classes data</h1>
+            <h1 className='text-4xl my-5'>All Classes data</h1>
+            <p className='divider text-green-800 text-5xl w-1/2 mx-auto'>-</p>
             {isLoading? <span className="loading loading-spinner loading-xs"></span> : null}
 
             <div className='grid my-5 grid-cols-1 md:grid-cols-2 gap-10'>

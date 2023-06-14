@@ -85,7 +85,7 @@ const CheckoutForm = ({ specificPay, price , id, refetch}) => {
                 email: user?.email,
                 transactionId: paymentIntent.id,
                 date: new Date(),
-                enrollStudent: 1,
+                totalEnrolment:specificPay.totalEnrolment+1,
                 availableSeats:specificPay.availableSeats-1,
                 classImage:specificPay.classImage,
                 className:specificPay.className,

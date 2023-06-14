@@ -105,7 +105,7 @@ const Login = () => {
       </form>
 
      </div>
-     <div className="social-login bg-white p-4 rounded-lg">
+     <div className="social-login shadow-md  p-4 rounded-lg">
           <p className='font-bold'>Login with Google</p>
          <div className="divider">  </div>
           <button onClick={handleGoogleLogin} className='btn btn-primary'><FaGoogle></FaGoogle></button>
