@@ -4,6 +4,7 @@ import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import InstructorChart from './InstructorChart';
 
 const InsructorHome = () => {
     const {user, loading}=useAuth();
@@ -56,7 +57,9 @@ const InsructorHome = () => {
         </div>
         
         </div>
-            
+            <div className='pt-10'>
+                <InstructorChart></InstructorChart>
+            </div>
         </div>
     );
 };

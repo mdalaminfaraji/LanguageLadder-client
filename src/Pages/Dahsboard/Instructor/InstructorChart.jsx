@@ -1,6 +1,6 @@
 import React from 'react';
 import { AreaChart, Area, XAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-const AreaChart = () => {
+const InstructorChart = () => {
     const data = [
         { name: 'Jan', value: 400 },
         { name: 'Feb', value: 300 },
@@ -21,4 +21,4 @@ const AreaChart = () => {
     );
 };
 
-export default AreaChart;
+export default InstructorChart;
